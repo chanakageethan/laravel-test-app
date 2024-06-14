@@ -13,11 +13,10 @@
 <body class="bg-slate-100 stext-slate-900">
     <header class="bg-slate-8-- shadow-lg">
         <nav>
-            <a href="{{ route('home') }}" class="nav-link">Home</a>
+            <a href="{{ route('posts.index') }}" class="nav-link">Home</a>
 
             @auth
-                <div class="relative grid place-items-center"
-                x-data="{open:false}">
+                <div class="relative grid place-items-center" x-data="{ open: false }">
                     {{-- Dropdown menu button --}}
                     {{-- <button @click="open = !open" type="button" class="round-btn">
                         <img src="https://picsum.photos/200" alt="">
@@ -26,12 +25,13 @@
                     <button @click="open = !open" class="block hover:bg-slate-100 pl-4 pr-8 py-2">Settings</button>
 
                     {{-- Dropdown menu --}}
-                    <div x-show="open" @click.outside="open=false" class="bg-white shadow-lg absolute top-10 right-0 rounded-lg overflow-hidden font-light">
-                        <p class="username">{{auth()->user()->name}}</p>
-                        <a href="{{route('dashboard')}}" class="block hover:bg-slate-100 pl-4 pr-8 py-2">Dashbord</a>
+                    <div x-show="open" @click.outside="open=false"
+                        class="bg-white shadow-lg absolute top-10 right-0 rounded-lg overflow-hidden font-light">
+                        <p class="username">{{ auth()->user()->name }}</p>
+                        <a href="{{ route('dashboard') }}" class="block hover:bg-slate-100 pl-4 pr-8 py-2">Dashbord</a>
 
 
-                        <form action="{{route('logout')}}" method="post">
+                        <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <button class="block hover:bg-slate-100 pl-4 pr-8 py-2">Logout</button>
                         </form>
@@ -52,7 +52,7 @@
     <main class="p-8 px-4 mx-auto max-w-screen-lg">
         {{ $slot }}
 
-     
+
     </main>
 
 </body>
